@@ -1,0 +1,11 @@
+package com.ingenico.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.ingenico.dto.TransferDTO;
+
+@Repository
+public interface TransferRepository extends JpaRepository<TransferDTO, Long>{
+	TransferDTO save(TransferDTO transferDTO);
+}
