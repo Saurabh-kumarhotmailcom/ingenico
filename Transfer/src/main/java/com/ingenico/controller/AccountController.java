@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.ingenico.exception.TransferServiceException;
 import com.ingenico.model.Account;
 import com.ingenico.service.AccountService;
 
@@ -51,7 +52,11 @@ public class AccountController {
 	 */
 	@RequestMapping(value = "/delete/{iban}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteAccount(@PathVariable("iban")@Pattern(regexp = "^[0-9a-zA-Z]+",message="Please enter proper IBAN") String iban) {
-		accountService.deleteAccountByIban(iban);
+		try {
+			accountService.deleteAccountByIban(iban);
+		}catch(TransferServiceException e) {
+			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity<Account>(HttpStatus.NO_CONTENT);
 	}
 	

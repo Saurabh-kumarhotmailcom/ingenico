@@ -6,10 +6,13 @@ import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataRetrievalFailureException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.google.common.reflect.TypeToken;
 import com.ingenico.dto.AccountDTO;
+import com.ingenico.exception.TransferServiceException;
 import com.ingenico.model.Account;
 import com.ingenico.repository.AccountRepository;
 import com.ingenico.service.AccountService;
@@ -37,7 +40,11 @@ public class AccountServiceImpl implements AccountService {
 	 */
 	@Override
 	public void deleteAccountByIban(String iban) {
-		accountRepository.delete(iban);
+		try{
+			accountRepository.delete(iban);
+		}catch(EmptyResultDataAccessException e) {
+			throw new TransferServiceException("IBAN does not exist!!!");
+		}
 	}
 
 	/* (non-Javadoc)

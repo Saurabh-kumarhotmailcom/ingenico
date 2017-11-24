@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ingenico.exception.InsufficientBalanceException;
+import com.ingenico.exception.TransferServiceException;
 import com.ingenico.model.Transfer;
-import com.ingenico.service.TransferService;
+import com.ingenico.service.PaymentService;
 
 /**
  * The Class PaymentTransferController.
@@ -23,7 +25,7 @@ public class PaymentTransferController {
 	
 	/** The payment service. */
 	@Autowired
-	TransferService paymentService;
+	PaymentService paymentService;
 	
 	/**
 	 * Transfer.
@@ -33,7 +35,13 @@ public class PaymentTransferController {
 	 */
 	@RequestMapping(value = "/transfer/", method = RequestMethod.POST)
 	private ResponseEntity<?> transfer(@RequestBody@Valid Transfer transfer) {
-		paymentService.transfer(transfer);
+		try{
+			paymentService.transfer(transfer);
+		}catch(InsufficientBalanceException ex) {
+			return new ResponseEntity(ex.getMessage(),HttpStatus.BAD_REQUEST);
+		}catch(TransferServiceException ex) {
+			return new ResponseEntity(ex.getMessage(),HttpStatus.NOT_FOUND);
+		}
 		HttpHeaders headers = new HttpHeaders();
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 	}
