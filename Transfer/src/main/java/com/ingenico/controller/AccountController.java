@@ -1,6 +1,8 @@
 package com.ingenico.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -34,5 +36,11 @@ public class AccountController {
 	public ResponseEntity<?> deleteAccount(@PathVariable("iban") String iban) {
 		accountService.deleteAccountByIban(iban);
 		return new ResponseEntity<Account>(HttpStatus.NO_CONTENT);
+	}
+	
+	@RequestMapping(value = "/allaccount/", method = RequestMethod.GET)
+	public ResponseEntity<List<Account>> getAllAccount() {
+		List<Account> listAccount=accountService.getAllAccountDetails();
+		return new ResponseEntity<List<Account>>(listAccount, HttpStatus.OK);
 	}
 }

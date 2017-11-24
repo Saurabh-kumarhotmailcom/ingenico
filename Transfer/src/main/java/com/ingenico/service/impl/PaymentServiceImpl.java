@@ -12,10 +12,10 @@ import com.ingenico.dto.TransferDTO;
 import com.ingenico.model.Transfer;
 import com.ingenico.repository.AccountRepository;
 import com.ingenico.repository.TransferRepository;
-import com.ingenico.service.PaymentService;
+import com.ingenico.service.TransferService;
 
 @Service
-public class PaymentServiceImpl implements PaymentService{
+public class PaymentServiceImpl implements TransferService{
 
 	@Autowired
 	TransferRepository 	transferRepository;

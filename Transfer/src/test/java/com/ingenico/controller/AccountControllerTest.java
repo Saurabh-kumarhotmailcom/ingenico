@@ -2,13 +2,16 @@ package com.ingenico.controller;
 
 import java.math.BigDecimal;
 import java.net.URI;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
 import com.ingenico.model.Account;
-import com.ingenico.model.Transfer;
 
 public class AccountControllerTest {
+	
+	public static final String ENDPOINT="http://localhost:8081/ingenico/accounts/";
 
 	@Test
 	public void createAccount() {
@@ -20,7 +23,7 @@ public class AccountControllerTest {
 		account.setCustName("newCustomer");
 		account.setIban("NewIBAN");
 
-		URI uri = restTemplate.postForLocation("http://localhost:8081/ingenico/accounts/create/", account,
+		URI uri = restTemplate.postForLocation(ENDPOINT+"create/", account,
 				Account.class);
 		System.out.println("Location : " + uri.toASCIIString());
 	}
@@ -29,22 +32,17 @@ public class AccountControllerTest {
 	public void deleteAccount() {
 		System.out.println("Testing delete Acount API----------");
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.delete("http://localhost:8081/ingenico/accounts/delete/IBAN3");
+		restTemplate.delete(ENDPOINT+"delete/IBAN3");
 	}
 
 	@Test
-	public void transfer() {
-		System.out.println("Transfer ...");
-		Transfer t=new Transfer();
-		t.setAmount(new BigDecimal(100));
-		t.setCredtIBAN("IBAN2");
-		t.setDebitIBAN("IBAN4");
-		
+	public void getAllAccountDetails() {
+		System.out.println("All Account data ...");
 		
 		RestTemplate restTemplate = new RestTemplate();
-		URI uri = restTemplate.postForLocation("http://localhost:8081/ingenico/payments/transfer/", t,
-				Transfer.class);
-		System.out.println("Location : " + uri.toASCIIString());
+		List<LinkedHashMap<String, Object>> acccountMap = restTemplate.getForObject(ENDPOINT+"allaccount/", List.class);
+		System.out.println("ss"+acccountMap.size());
 	}
 
+	
 }

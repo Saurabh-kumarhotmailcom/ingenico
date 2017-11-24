@@ -1,10 +1,11 @@
-C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\controller\PaymentController.java
 C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\dto\TransferDTO.java
 C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\model\Transfer.java
+C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\config\SwaggerConfig.java
 C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\model\Account.java
+C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\controller\PaymentTransferController.java
 C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\config\JpaConfiguration.java
 C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\repository\TransferRepository.java
-C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\service\PaymentService.java
+C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\service\TransferService.java
 C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\dto\AccountDTO.java
 C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\controller\AccountController.java
 C:\General\WS\Nov\Transfer\src\main\java\com\ingenico\service\impl\PaymentServiceImpl.java

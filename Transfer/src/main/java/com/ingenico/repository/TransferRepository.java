@@ -7,5 +7,4 @@ import com.ingenico.dto.TransferDTO;
 
 @Repository
 public interface TransferRepository extends JpaRepository<TransferDTO, Long>{
-	TransferDTO save(TransferDTO transferDTO);
 }

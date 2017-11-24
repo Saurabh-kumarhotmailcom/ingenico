@@ -1,9 +1,12 @@
 package com.ingenico.service.impl;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.reflect.TypeToken;
 import com.ingenico.dto.AccountDTO;
 import com.ingenico.model.Account;
 import com.ingenico.repository.AccountRepository;
@@ -23,15 +26,21 @@ public class AccountServiceImpl implements AccountService {
 		return account;
 	}
 
-	@Override
-	public Account getAccountDetails(Account account) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public void deleteAccountByIban(String iban) {
 		accountRepository.delete(iban);
+	}
+
+
+
+	@Override
+	public List<Account> getAllAccountDetails() {
+		List<AccountDTO> listAccountDTO=accountRepository.findAll();
+	    java.lang.reflect.Type targetListType = new TypeToken<List<Account>>() {}.getType();
+	    List<Account> listAccount = modelMapper.map(listAccountDTO, targetListType);
+		return listAccount;
 	}
 
 }
