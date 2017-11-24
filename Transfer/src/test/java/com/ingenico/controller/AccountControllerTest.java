@@ -16,7 +16,6 @@ public class AccountControllerTest {
 	@Test
 	public void createAccount() {
 
-		System.out.println("Testing create Account API----------");
 		RestTemplate restTemplate = new RestTemplate();
 		Account account = new Account();
 		account.setBalance(new BigDecimal(300));
@@ -25,23 +24,19 @@ public class AccountControllerTest {
 
 		URI uri = restTemplate.postForLocation(ENDPOINT+"create/", account,
 				Account.class);
-		System.out.println("Location : " + uri.toASCIIString());
 	}
 	
 	@Test
 	public void deleteAccount() {
-		System.out.println("Testing delete Acount API----------");
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.delete(ENDPOINT+"delete/IBAN3");
 	}
 
 	@Test
 	public void getAllAccountDetails() {
-		System.out.println("All Account data ...");
 		
 		RestTemplate restTemplate = new RestTemplate();
 		List<LinkedHashMap<String, Object>> acccountMap = restTemplate.getForObject(ENDPOINT+"allaccount/", List.class);
-		System.out.println("ss"+acccountMap.size());
 	}
 
 	

@@ -20,6 +20,7 @@ datasource:
 ---
 logging:
   level:
-    org:
-      springframework:
-        web: DEBUG
+    org.springframework.web: ERROR
+    com.ingenico: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

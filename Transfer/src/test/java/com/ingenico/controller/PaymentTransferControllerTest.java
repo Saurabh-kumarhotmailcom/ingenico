@@ -16,7 +16,6 @@ public class PaymentTransferControllerTest {
 	
 	@Test
 	public void transfer() {
-		System.out.println("Transfer ...");
 		Transfer t=new Transfer();
 		t.setAmount(new BigDecimal(100));
 		t.setCredtIBAN("IBAN2");

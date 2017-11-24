@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.transaction.Transactional;
 
-import org.apache.tomcat.util.bcel.classfile.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +37,7 @@ public class PaymentServiceImpl implements PaymentService{
 		AccountDTO debtAccount=accountRepository.findOne(transfer.getDebitIBAN());
 		
 		if(debtAccount == null) {
-			throw new TransferServiceException("Debitor IBAN does not exists"+transfer.getDebitIBAN());
+			throw new TransferServiceException("Debitor IBAN does not exists "+transfer.getDebitIBAN());
 		}
 		
 		if(credAccount == null) {
@@ -48,7 +47,7 @@ public class PaymentServiceImpl implements PaymentService{
 		
 		BigDecimal dbtBalance=debtAccount.getBalance().subtract(transfer.getAmount());
 		
-		if(dbtBalance.compareTo(Constants.minimumBalance) < 0) {
+		if(dbtBalance.compareTo(Constants.MINIMUMBALANCE) < 0) {
 			throw new InsufficientBalanceException();
 		}
 		
@@ -65,5 +64,15 @@ public class PaymentServiceImpl implements PaymentService{
 		transferDTO.setTimeOfTxn(new Date());
 		transferRepository.save(transferDTO);
 	}
+
+	public void setTransferRepository(TransferRepository transferRepository) {
+		this.transferRepository = transferRepository;
+	}
+
+	public void setAccountRepository(AccountRepository accountRepository) {
+		this.accountRepository = accountRepository;
+	}
+	
+	
 
 }
