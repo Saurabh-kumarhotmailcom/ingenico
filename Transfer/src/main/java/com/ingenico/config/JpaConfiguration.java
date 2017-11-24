@@ -1,3 +1,4 @@
+
 package com.ingenico.config;
 
 import java.util.Properties;
@@ -25,6 +26,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+/**
+ * The Class JpaConfiguration.
+ */
 @Configuration
 @EnableJpaRepositories(basePackages = "com.ingenico",
 		entityManagerFactoryRef = "entityManagerFactory",
@@ -32,13 +36,20 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 public class JpaConfiguration {
 
+	/** The environment. */
 	@Autowired
 	private Environment environment;
 
+	/** The max pool size. */
 	@Value("${datasource.sampleapp.maxPoolSize:10}")
 	private int maxPoolSize;
 
 	
+	/**
+	 * Data source properties.
+	 *
+	 * @return the data source properties
+	 */
 	@Bean
 	@Primary
 	@ConfigurationProperties(prefix = "datasource.sampleapp")
@@ -46,6 +57,11 @@ public class JpaConfiguration {
 		return new DataSourceProperties();
 	}
 
+	/**
+	 * Data source.
+	 *
+	 * @return the data source
+	 */
 	/*
 	 * Configure HikariCP pooled DataSource.
 	 */
@@ -64,6 +80,12 @@ public class JpaConfiguration {
 			return dataSource;
 	}
 
+	/**
+	 * Entity manager factory.
+	 *
+	 * @return the local container entity manager factory bean
+	 * @throws NamingException the naming exception
+	 */
 	/*
 	 * Entity Manager Factory setup.
 	 */
@@ -77,6 +99,11 @@ public class JpaConfiguration {
 		return factoryBean;
 	}
 
+	/**
+	 * Jpa vendor adapter.
+	 *
+	 * @return the jpa vendor adapter
+	 */
 	/*
 	 * Provider specific adapter.
 	 */
@@ -86,6 +113,11 @@ public class JpaConfiguration {
 		return hibernateJpaVendorAdapter;
 	}
 
+	/**
+	 * Jpa properties.
+	 *
+	 * @return the properties
+	 */
 	/*
 	 * Here you can specify any provider specific properties.
 	 */
@@ -99,6 +131,12 @@ public class JpaConfiguration {
 		return properties;
 	}
 
+	/**
+	 * Transaction manager.
+	 *
+	 * @param emf the emf
+	 * @return the platform transaction manager
+	 */
 	@Bean
 	@Autowired
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {

@@ -23,6 +23,9 @@ public class PaymentServiceImpl implements TransferService{
 	@Autowired
 	AccountRepository accountRepository; 
 	
+	/* (non-Javadoc)
+	 * @see com.ingenico.service.TransferService#transfer(com.ingenico.model.Transfer)
+	 */
 	@Override
 	@Transactional
 	public void transfer(Transfer transfer) {

@@ -11,7 +11,7 @@ import com.ingenico.model.Account;
 
 public class AccountControllerTest {
 	
-	public static final String ENDPOINT="http://localhost:8081/ingenico/accounts/";
+	public static final String ENDPOINT="http://localhost:8081/ingenico/account/";
 
 	@Test
 	public void createAccount() {

@@ -12,7 +12,7 @@ import com.ingenico.model.Transfer;
 
 public class PaymentTransferControllerTest {
 
-	public static final String ENDPOINT="http://localhost:8081/ingenico/payments";
+	public static final String ENDPOINT="http://localhost:8081/ingenico/payment";
 	
 	@Test
 	public void transfer() {
