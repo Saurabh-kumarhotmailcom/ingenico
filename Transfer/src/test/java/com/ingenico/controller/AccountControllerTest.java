@@ -24,7 +24,7 @@ public class AccountControllerTest {
 				Account.class);
 		System.out.println("Location : " + uri.toASCIIString());
 	}
-
+	
 	@Test
 	public void deleteAccount() {
 		System.out.println("Testing delete Acount API----------");

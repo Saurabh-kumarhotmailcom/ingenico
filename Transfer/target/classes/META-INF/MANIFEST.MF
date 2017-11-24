@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: Transfer
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: FA23XB
+Built-By: fa23xb
 Implementation-Vendor-Id: com.ingenico
 Build-Jdk: 1.8.0_151
 Implementation-URL: http://projects.spring.io/spring-boot/Transfer/

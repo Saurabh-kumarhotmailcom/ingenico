@@ -6,7 +6,7 @@ public class Transfer {
 	private String credtIBAN;
 	private String debitIBAN;
 	private BigDecimal amount;
-	private String timeOfTxn;
+	
 	public String getCredtIBAN() {
 		return credtIBAN;
 	}
@@ -25,12 +25,6 @@ public class Transfer {
 	}
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
-	}
-	public String getTimeOfTxn() {
-		return timeOfTxn;
-	}
-	public void setTimeOfTxn(String timeOfTxn) {
-		this.timeOfTxn = timeOfTxn;
 	}
 	
 	

@@ -5,10 +5,8 @@ import java.util.Date;
 
 import javax.transaction.Transactional;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ingenico.dto.AccountDTO;
 import com.ingenico.dto.TransferDTO;
 import com.ingenico.model.Transfer;
@@ -24,8 +22,6 @@ public class PaymentServiceImpl implements PaymentService{
 	
 	@Autowired
 	AccountRepository accountRepository; 
-	
-	ModelMapper modelMapper = new ModelMapper();
 	
 	@Override
 	@Transactional
