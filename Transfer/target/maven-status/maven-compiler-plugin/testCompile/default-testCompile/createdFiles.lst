@@ -1,0 +1,3 @@
+com\ingenico\controller\PaymentTransferControllerTest.class
+com\ingenico\controller\AccountControllerTest.class
+com\ingenico\service\impl\PaymentServiceImplTest.class

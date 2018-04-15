@@ -6,6 +6,8 @@ com\ingenico\config\Constants.class
 com\ingenico\config\SwaggerConfig.class
 com\ingenico\RunApplication.class
 com\ingenico\config\JpaConfiguration.class
+com\ingenico\service\TransferService.class
+com\ingenico\controller\PaymentController.class
 com\ingenico\controller\AccountController.class
 com\ingenico\repository\TransferRepository.class
 com\ingenico\exception\TransferServiceException.class

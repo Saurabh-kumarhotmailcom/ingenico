@@ -9,9 +9,10 @@ import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
 import com.ingenico.model.Account;
 
+
 public class AccountControllerTest {
 	
-	public static final String ENDPOINT="http://localhost:8081/ingenico/account/";
+	public static final String ENDPOINT="http://localhost:8081/banking/account/";
 
 	@Test
 	public void createAccount() {

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.ingenico.service.impl.PaymentServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.136 sec - in com.ingenico.service.impl.PaymentServiceImplTest
